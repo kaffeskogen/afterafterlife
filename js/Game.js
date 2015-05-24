@@ -65,8 +65,8 @@ G.prototype = {
     endLife: function() {
         sm.pauseAllStars();
         ui.removeLife();
-        if (this.gameStage < 3) {
-            this.gameStage++;
+        this.gameStage++;
+        if (this.gameStage < 3) {            
             setTimeout(function() {
                 ui.showPlayButton();
             }, 800)

@@ -196,33 +196,62 @@ function finishedLoading(bufferList) {
       touchSound.start(0);
     }
 
+    // sounds.endAmbient = function(){
+    //   var gain = context.createGain();
+    //   gain.gain.value = 0.2;
+    //   var endAmbient;
+
+    //   if(Game.gameStage==4){
+    //     if(typeof(activeSounds.ambient3) !== "undefined"){
+    //       activeSounds.ambient3.stop();
+    //     }     
+    //   }
+    //   endAmbient = context.createBufferSource();
+    //   endAmbient.buffer = bufferList[16];
+    //   endAmbient.connect(gain);
+    //   endAmbient.connect(context.destination);
+    //   endAmbient.start(0);
+    //   endAmbient.loop = true;
+    //   activeSounds.endAmbient = endAmbient;
+    // }
+
     sounds.pauseAmbient = function(){
-      var gain = context.createGain();
-      gain.gain.value = 0.2;
+      
+      
       var pauseAmbient;
+      pauseAmbient = context.createBufferSource();
 
       if(Game.gameStage==2){
         if(typeof(activeSounds.ambient1) !== "undefined"){
           activeSounds.ambient1.stop();
+          pauseAmbient.buffer = bufferList[16];
         }
       }
       else if(Game.gameStage==3){
         if(typeof(activeSounds.ambient2) !== "undefined"){
           activeSounds.ambient2.stop();
-          activeSounds.ambient2.stop();
+          
+          pauseAmbient.buffer = bufferList[16];
+      }
+    }
+      else if(Game.gameStage==4){
+        if(typeof(activeSounds.ambient3) !== "undefined"){
+          activeSounds.ambient3.stop();
+          pauseAmbient.buffer = bufferList[18];
         }
       }
-      pauseAmbient = context.createBufferSource();
-      pauseAmbient.buffer = bufferList[16];
+      var gain = context.createGain();
+      gain.gain.value = 0.08;
       pauseAmbient.connect(gain);
-      pauseAmbient.connect(context.destination);
+      gain.connect(context.destination);
       pauseAmbient.start(0);
       pauseAmbient.loop = true;
       activeSounds.pauseAmbient = pauseAmbient;
     }
 
     sounds.ambient1 = function(){
-
+      var firstGain = context.createGain();
+      firstGain.gain.value = 0.18;
       var gain = context.createGain();
       gain.gain.value = 0.3;
       var ambient1;
@@ -233,8 +262,8 @@ function finishedLoading(bufferList) {
         
         ambient1 = context.createBufferSource();
         ambient1.buffer = bufferList[7];
-        ambient1.connect(gain);
-        ambient1.connect(context.destination);
+        ambient1.connect(firstGain);
+        firstGain.connect(context.destination);
         ambient1.start(0);
         ambient1.loop = true;
         activeSounds.ambient1 = ambient1;
