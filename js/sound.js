@@ -114,7 +114,8 @@ function newAudioContext() {
       './audio/nextLevelDown.mp3',
       './audio/nextLevelUp.mp3',
       './audio/dead.mp3',
-      './audio/multiply.mp3'      //15
+      './audio/multiply.mp3',      //15
+      './audio/click.mp3'
     ],
     finishedLoading  
   );
@@ -126,9 +127,19 @@ function newAudioContext() {
 
 function finishedLoading(bufferList) {
 
+    sounds.clickSound = function(){
+      var gain = context.createGain();
+      gain.gain.value = 0.3;
+      var click = context.createBufferSource();
+      click.buffer = bufferList[15];
+      click.connect(gain);
+      gain.connect(context.destination);
+      click.start(0);
+    }
+
     sounds.plupp = function(){
       var gain = context.createGain();
-      gain.gain.value = 0.02;
+      gain.gain.value = 0.05;
       var touchSound = context.createBufferSource();
       touchSound.buffer = bufferList[Math.floor((Math.random() * 6) + 1)];
       touchSound.connect(gain);
@@ -138,7 +149,7 @@ function finishedLoading(bufferList) {
 
     sounds.nextLevel = function(){
       var gain = context.createGain();
-      gain.gain.value = 0.1;
+      gain.gain.value = 0.3;
       var nextLevel = context.createBufferSource();
       nextLevel.buffer = bufferList[11];
       nextLevel.connect(gain);
@@ -148,7 +159,7 @@ function finishedLoading(bufferList) {
 
     sounds.nextLevelUp = function(){
       var gain = context.createGain();
-      gain.gain.value = 0.1;
+      gain.gain.value = 0.3;
       var nextLevelUp = context.createBufferSource();
       nextLevelUp.buffer = bufferList[12];
       nextLevelUp.connect(gain);
@@ -158,7 +169,7 @@ function finishedLoading(bufferList) {
 
     sounds.dead = function(){
       var gain = context.createGain();
-      gain.gain.value = 0.3;
+      gain.gain.value = 0.6;
       var dead = context.createBufferSource();
       dead.buffer = bufferList[13];
       dead.connect(gain);
@@ -169,7 +180,7 @@ function finishedLoading(bufferList) {
     
     sounds.touch = function(){
       var gain = context.createGain();
-      gain.gain.value = 0.1;
+      gain.gain.value = 0.3;
       
       var touchSound = context.createBufferSource();
       touchSound.buffer = bufferList[10];
@@ -178,20 +189,38 @@ function finishedLoading(bufferList) {
       touchSound.start(0);
     }
 
-    sounds.ambient1 = function(){ 
+    sounds.ambient1 = function(){
+
       var gain = context.createGain();
-      gain.gain.value = 0.1;
+      gain.gain.value = 0.3;
       var startSound = context.createBufferSource();
       startSound.buffer = bufferList[7];
       startSound.connect(gain);
       gain.connect(context.destination);
-      startSound.start(0);
+      
+
+        startSound.start(0);
       startSound.loop = true;
+       
+    
+    }
+
+    sounds.ambient2 = function(){
+      var gain = context.createGain();
+      gain.gain.value = 0.3;
+      var startSound = context.createBufferSource();
+      
+        startSound.buffer = bufferList[8];
+        startSound.connect(gain);
+        gain.connect(context.destination);
+        startSound.start(0);
+        startSound.loop = true;
+   
     }
 
     sounds.multiply = function(){
       var gain = context.createGain();
-      gain.gain.value = 0.07;
+      gain.gain.value = 0.1;
       var multiply = context.createBufferSource();
       multiply.buffer = bufferList[14];
       multiply.connect(gain);

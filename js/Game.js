@@ -55,10 +55,13 @@ G.prototype = {
     },
 
     newRound: function() {
+        var _this = this;
         sm.clearAllStars();
         sm.startCreating();
         ui.hidePlayButton();
         ui.hideMiddleView();
+        sounds.ambient1();
+        // sounds.ambient2();
     },
 
     endLife: function() {
