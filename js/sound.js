@@ -10,6 +10,8 @@ sounds = {
     multiply: function () {}
 };
 
+activeSounds = {};
+
 
 function BufferLoader(context, urlList, callback) {
   this.context = context;
@@ -155,6 +157,7 @@ function finishedLoading(bufferList) {
       nextLevel.connect(gain);
       gain.connect(context.destination);
       nextLevel.start(0);
+      activeSounds.nextLevel = nextLevel;
     }
 
     sounds.nextLevelUp = function(){
@@ -193,16 +196,45 @@ function finishedLoading(bufferList) {
 
       var gain = context.createGain();
       gain.gain.value = 0.3;
-      var startSound = context.createBufferSource();
-      startSound.buffer = bufferList[7];
-      startSound.connect(gain);
-      gain.connect(context.destination);
+      var ambient1;
+      var ambient2; 
+      var ambient3;
       
-
-        startSound.start(0);
-      startSound.loop = true;
-       
-    
+      if(Game.gameStage==1){
+        ambient1 = context.createBufferSource();
+        ambient1.buffer = bufferList[7];
+        ambient1.connect(gain);
+        ambient1.connect(context.destination);
+        ambient1.start(0);
+        ambient1.loop = true;
+        activeSounds.ambient1 = ambient1;
+        
+      }
+      else if(Game.gameStage==2){
+        if(typeof(activeSounds.ambient1) !== "undefined"){
+          activeSounds.ambient1.stop();
+        }
+        ambient2= context.createBufferSource();
+        ambient2.buffer = bufferList[8];
+        ambient2.connect(gain);
+        gain.connect(context.destination);
+        ambient2.start(0)
+        ambient2.loop = true;
+        activeSounds.ambient2 = ambient2;
+      }
+      else if(Game.gameStage==3){
+        if(typeof(activeSounds.ambient2) !== "undefined"){
+          activeSounds.ambient2.stop();
+        }
+        ambient3= context.createBufferSource();
+        ambient3.buffer = bufferList[9];
+        ambient3.connect(gain);
+        gain.connect(context.destination);
+        ambient3.start(0)
+        ambient3.loop = true;
+        activeSounds.ambient3 = ambient3;
+      }
+      
     }
 
     sounds.ambient2 = function(){
