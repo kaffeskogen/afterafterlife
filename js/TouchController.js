@@ -44,7 +44,7 @@ TouchController.prototype = {
             var xPos = event.targetTouches[0].pageX;
             var yPos = event.targetTouches[0].pageY;
 
-            _this.container.innerHTML = 'Y:' + yPos + ' X: ' + xPos;
+            _this.container.innerHTML = 'X: ' + xPos + '<br>' +'Y: ' + yPos;
             var elPos = Game.getPlayer().getCurrentPos();
 
             var dif = {

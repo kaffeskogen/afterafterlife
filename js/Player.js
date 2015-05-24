@@ -14,6 +14,11 @@ Player.prototype = {
         this.y = Game.options.height * 0.8;
     },
 
+    getLeft:    function () { return this.x - this.halfWidth },
+    getTop:     function () { return this.y - this.halfHeight },
+    getRight:   function () { return this.getLeft() + this.width },
+    getBottom:  function () { return this.getTop() + this.height },
+
     update: function() {
 
     },
@@ -22,6 +27,7 @@ Player.prototype = {
         ctx.clearRect(0, 0, Game.options.width, Game.options.height)
         ctx.fillStyle = "rgb(0,200,0)";
 
+        // ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         ctx.drawImage(this.image, this.x - this.halfWidth, this.y - this.halfHeight, this.width, this.height);
         ctx.fill()
     },

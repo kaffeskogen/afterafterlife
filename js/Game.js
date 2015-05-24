@@ -8,6 +8,9 @@ G.prototype = {
         _this.entities = [];
         _this.canvas = document.querySelector('#main-canvas');
         _this.ctx = _this.canvas.getContext('2d');
+        _this.currentScore = 0;
+        _this.extraStarValue = 0;
+        _this.scoreMultiplier = 1;
         _this.options = {
             width: 375,
             height: 667,
@@ -16,7 +19,6 @@ G.prototype = {
 
     start: function() {
         var _this = this;
-
     },
 
     getLine: function() {
@@ -25,6 +27,10 @@ G.prototype = {
 
     getPlayer: function() {
         return this.entities[0];
+    },
+
+    endLife: function() {
+
     },
 
     addEntity: function(e) {
