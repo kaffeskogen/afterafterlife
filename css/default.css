@@ -24,3 +24,16 @@ canvas {
 #preloader {
     display: none;
 }
+
+.score-counter {
+    width: 100%;
+    padding: 10px;
+    font-size: 54px;
+    text-align: center;
+    background: #fff;
+    color: #3d3d3d;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
