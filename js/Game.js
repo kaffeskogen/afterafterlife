@@ -22,8 +22,7 @@ G.prototype = {
             xtraLife: 0,
             multiplier: 0
         };
-
-        _this.updateCanvasBounds();
+        _this.setEventListeners();
     },
 
     addToPowerUpCount: function(pw) {
@@ -32,10 +31,10 @@ G.prototype = {
 
     updateCanvasBounds: function() {
         var _this = this;
-        var w = (parseInt(_this.canvas.offsetWidth) - 20) + 'px';
+        var w = this.options.width + 'px';
         _this.canvas.style.width = w
         _this.canvas.setAttribute('width', w)
-        var h = (parseInt(_this.canvas.offsetHeight) - 10) + 'px';
+        var h = this.options.height + 'px';
         _this.canvas.style.height = h
         _this.canvas.setAttribute('height', h)
 
@@ -90,8 +89,10 @@ G.prototype = {
     },
 
     onWindowResize: function() {
-        var _this = this;
-        for (var i = 0, child; child = _this.entities[i++];) {
+        Game.options.width = document.body.offsetWidth - 20;
+        Game.options.height = document.body.offsetHeight - 10;
+        Game.updateCanvasBounds();
+        for (var i = 0, child; child = Game.entities[i++];) {
             if (isUndefined(child.onWindowResize)) child.onWindowResize();
         }
     },

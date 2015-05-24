@@ -13,6 +13,7 @@ var cd = new CollisionDetector();
 
 var ui = new UI();
 
+Game.onWindowResize();
 
 // POWERUPS
 var PUs = {
