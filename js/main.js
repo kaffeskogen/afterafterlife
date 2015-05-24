@@ -11,10 +11,28 @@ Game.addEntity(sm);
 
 var cd = new CollisionDetector();
 
-var starInt = setInterval(function() {
-    sm.addStar()
-}, 200)
-
 var ui = new UI();
 
+
+// POWERUPS
+var PUs = {
+    doublePoints: new PowerUp( {
+        onStart: function() {
+            Game.scoreMultiplier += 2;
+        },
+        onEnd: function() {
+            Game.scoreMultiplier -= 2;
+        },
+        timing: 5000
+    })
+}
+for (var p in PUs) {
+    Game.addEntity(PUs[p]);
+}
+
+PUs.doublePoints.setOut();
+
+// Starts Game
 loop.start();
+
+sm.startCreating();

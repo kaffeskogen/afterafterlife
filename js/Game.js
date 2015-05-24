@@ -76,7 +76,7 @@ G.prototype = {
 
     draw: function() {
         var _this = this;
-        _this.ctx.restore();
+        _this.ctx.clearRect(0, 0, Game.options.width, Game.options.height)
         for (var i = 0, child; child = _this.entities[i++];) {
             child.draw(_this.ctx);
         }

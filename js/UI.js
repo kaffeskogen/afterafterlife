@@ -71,7 +71,7 @@ UI.prototype = {
         for (var i = (Game.currentScore + '').length; i < 7; i++) {
             write += '0';
         }
-        this.scoreHolder.innerHTML = write + Game.currentScore;
+        this.scoreHolder.innerHTML = write + Math.floor(Game.currentScore);
     },
 
     hideScoreBox: function() {
