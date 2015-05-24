@@ -91,9 +91,16 @@ function newAudioContext() {
   bufferLoader = new BufferLoader(
     context,
     [
+      './audio/plupp1.mp3',
+      './audio/plupp2.mp3',
+      './audio/plupp3.mp3',
+      './audio/plupp4.mp3',
+      './audio/plupp5.mp3',       //5
+      './audio/plupp6.mp3',
+      './audio/plupp7.mp3',
       './audio/ambient1.mp3',
       './audio/ambient2.mp3',
-      './audio/ambient3.mp3',
+      './audio/ambient3.mp3',     //10
       './audio/kontrolljud1.mp3'
     ],
     finishedLoading
@@ -107,12 +114,18 @@ function newAudioContext() {
 
 function finishedLoading(bufferList) {
 
- 
+    sounds.plupp = function(){
+      var touchSound = context.createBufferSource();
+      touchSound.buffer = bufferList[Math.floor((Math.random() * 6) + 1)];
+      touchSound.connect(context.destination);
+      touchSound.start(0);
+    }
+
     
     
     sounds.touch = function(){
       var touchSound = context.createBufferSource();
-      touchSound.buffer = bufferList[3];
+      touchSound.buffer = bufferList[10];
       touchSound.connect(context.destination);
       touchSound.start(0);
     }
@@ -121,7 +134,7 @@ function finishedLoading(bufferList) {
 
     
       var startSound = context.createBufferSource();
-      startSound.buffer = bufferList[0];
+      startSound.buffer = bufferList[7];
       startSound.connect(context.destination);
       startSound.start(0);
     }

@@ -57,6 +57,8 @@ StarMaker.prototype = {
             Game.currentScore += (addedScore * Game.scoreMultiplier);
 
             ui.updateScoreBox();
+
+            sounds.plupp();
         }
 
         _this.stars = arr;
