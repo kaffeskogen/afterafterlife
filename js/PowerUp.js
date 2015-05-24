@@ -61,10 +61,10 @@ PowerUp.prototype = {
     },
 
     pickUp: function() {
-        console.log('picked up!');
         this.onStart();
         this.stopFalling();
         this.hide();
+        sounds.multiply();
         setTimeout(this.onEnd, this.timing)
     }
 }

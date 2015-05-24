@@ -109,7 +109,8 @@ function newAudioContext() {
       './audio/kontrolljud.mp3',
       './audio/nextLevelDown.mp3',
       './audio/nextLevelUp.mp3',
-      './audio/dead.mp3'
+      './audio/dead.mp3',
+      './audio/multiply.mp3'      //15
     ],
     finishedLoading  
   );
@@ -162,7 +163,6 @@ function finishedLoading(bufferList) {
     }
 
     
-    
     sounds.touch = function(){
       var gain = context.createGain();
       gain.gain.value = 0.1;
@@ -183,6 +183,16 @@ function finishedLoading(bufferList) {
       gain.connect(context.destination);
       startSound.start(0);
       startSound.loop = true;
+    }
+
+    sounds.multiply = function(){
+      var gain = context.createGain();
+      gain.gain.value = 0.07;
+      var multiply = context.createBufferSource();
+      multiply.buffer = bufferList[14];
+      multiply.connect(gain);
+      gain.connect(context.destination);
+      multiply.start(0);
     }
 
     sounds.ambient1();
