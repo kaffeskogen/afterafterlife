@@ -9,12 +9,27 @@ G.prototype = {
         _this.canvas = document.querySelector('#main-canvas');
         _this.ctx = _this.canvas.getContext('2d');
         _this.currentScore = 0;
+        _this.gameStage = 1;
         _this.extraStarValue = 0;
         _this.scoreMultiplier = 1;
         _this.options = {
             width: 375,
             height: 667,
         };
+        _this.updateCanvasBounds();
+    },
+
+    updateCanvasBounds: function() {
+        var _this = this;
+        var w = (parseInt(_this.canvas.offsetWidth) - 20) + 'px';
+        console.log(w);
+        _this.canvas.style.width = w
+        _this.canvas.setAttribute('width', w)
+        var h = (parseInt(_this.canvas.offsetHeight) - 10) + 'px';
+        _this.canvas.style.height = h
+        _this.canvas.setAttribute('height', h)
+
+        _this.canvas.style.marginLeft = '10px';
     },
 
     start: function() {
@@ -30,7 +45,8 @@ G.prototype = {
     },
 
     endLife: function() {
-
+        sm.pauseAllStars();
+        
     },
 
     addEntity: function(e) {

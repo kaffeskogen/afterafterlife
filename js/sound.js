@@ -87,7 +87,7 @@ function newAudioContext() {
   //Creates a audioContext
   context = new AudioContext();
   
-  //Calls the BufferLoader and loads sound
+  // Calls the BufferLoader and loads sound
   bufferLoader = new BufferLoader(
     context,
     [
@@ -103,9 +103,8 @@ function newAudioContext() {
       './audio/ambient3.mp3',     //10
       './audio/kontrolljud1.mp3'
     ],
-    finishedLoading
-    
-    );
+    finishedLoading  
+  );
 
   bufferLoader.load();
  
@@ -141,7 +140,7 @@ function finishedLoading(bufferList) {
 
     sounds.ambient1();
   
- 
+  console.log('finnished loading');
 
 }
 

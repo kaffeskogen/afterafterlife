@@ -12,6 +12,10 @@ StarMaker.prototype = {
         }
     },
 
+    startCreating: function() {
+
+    },
+
     addStar: function(x) {
         var s;
         if (typeof(x) !== 'undefined') {
@@ -26,6 +30,7 @@ StarMaker.prototype = {
             this.lastStar.x = t;
         }
     },
+
 
     pauseAllStars: function() {
         clearInterval(starInt);
