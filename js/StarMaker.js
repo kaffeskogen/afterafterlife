@@ -13,7 +13,10 @@ StarMaker.prototype = {
     },
 
     startCreating: function() {
-
+        var _this = this;
+        var starInt = setInterval(function() {
+            _this.addStar()
+        }, 500)
     },
 
     addStar: function(x) {

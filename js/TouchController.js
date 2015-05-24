@@ -22,12 +22,18 @@ TouchController.prototype = {
             canvas_x = event.targetTouches[0].pageX;
             canvas_y = event.targetTouches[0].pageY;
 
+            for (p in PUs) {
+                console.log(PUs);
+                if(cd.touchCollision(canvas_x, canvas_y, PUs[p])) {
+                    PUs[p].pickUp();
+                }
+            }
+
             _this.canvas.addEventListener('touchmove', onTouchMove, false);
             _this.canvas.addEventListener('touchend', onTouchUp, false);
             _this.container.innerHTML = 'touch down';
 
             sounds.touch();
-
 
         }
 

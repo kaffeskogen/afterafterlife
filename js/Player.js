@@ -5,7 +5,6 @@ var Player = function() {
 
 Player.prototype = {
     initialize: function() {
-
         this.width = 80;
         this.height = 80;
         this.halfWidth = this.width/2;
@@ -24,7 +23,7 @@ Player.prototype = {
     },
 
     draw: function(ctx) {
-        ctx.clearRect(0, 0, Game.options.width, Game.options.height)
+        ctx.beginPath();
         ctx.fillStyle = "rgb(0,200,0)";
 
         // ctx.drawImage(this.image, this.x, this.y, this.width, this.height);

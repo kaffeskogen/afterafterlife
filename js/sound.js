@@ -1,6 +1,10 @@
 var bufferLoader;
 
-sounds = {};
+sounds = {
+  plupp: function() {},
+  touch: function() {},
+  ambient1: function() {},
+};
 
 
 function BufferLoader(context, urlList, callback) {
@@ -84,29 +88,29 @@ BufferLoader.prototype.load = function() {
 
 function newAudioContext() {
   
-  //Creates a audioContext
-  context = new AudioContext();
+  // //Creates a audioContext
+  // context = new AudioContext();
   
-  // Calls the BufferLoader and loads sound
-  bufferLoader = new BufferLoader(
-    context,
-    [
-      './audio/plupp1.mp3',
-      './audio/plupp2.mp3',
-      './audio/plupp3.mp3',
-      './audio/plupp4.mp3',
-      './audio/plupp5.mp3',       //5
-      './audio/plupp6.mp3',
-      './audio/plupp7.mp3',
-      './audio/ambient1.mp3',
-      './audio/ambient2.mp3',
-      './audio/ambient3.mp3',     //10
-      './audio/kontrolljud1.mp3'
-    ],
-    finishedLoading  
-  );
+  // // Calls the BufferLoader and loads sound
+  // bufferLoader = new BufferLoader(
+  //   context,
+  //   [
+  //     './audio/plupp1.mp3',
+  //     './audio/plupp2.mp3',
+  //     './audio/plupp3.mp3',
+  //     './audio/plupp4.mp3',
+  //     './audio/plupp5.mp3',       //5
+  //     './audio/plupp6.mp3',
+  //     './audio/plupp7.mp3',
+  //     './audio/ambient1.mp3',
+  //     './audio/ambient2.mp3',
+  //     './audio/ambient3.mp3',     //10
+  //     './audio/kontrolljud1.mp3'
+  //   ],
+  //   finishedLoading  
+  // );
 
-  bufferLoader.load();
+  // bufferLoader.load();
  
 }
 
@@ -122,8 +126,6 @@ function finishedLoading(bufferList) {
       gain.connect(context.destination);
       touchSound.start(0);
     }
-
-    
     
     sounds.touch = function(){
       var gain = context.createGain();
