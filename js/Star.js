@@ -13,8 +13,8 @@ Star.prototype = {
         this.height = 32;
         this.value = 0;
         this.xSpeed = 0.1;
-        this.ySpeed = 8;
-        this.defaultYSpeed = 8;
+        this.ySpeed = 2;
+        this.defaultYSpeed = 2;
         this.canvasWidth = 375;
     },
 
@@ -43,7 +43,6 @@ Star.prototype = {
 
     draw: function(ctx) {
         ctx.beginPath();
-        ctx.fillStyle = "#fff";
         ctx.drawImage(this.image, this.x + this.width/2, this.y + this.height/2, this.width, this.height);
         ctx.fill()
     },

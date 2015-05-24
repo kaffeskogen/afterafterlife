@@ -16,6 +16,7 @@ UI.prototype = {
         this.createScoreBox();
         this.addLivesToMiddleview();
         this.createPlayerIcon();
+        this.setGameOver = null;
     },
 
     onWindowResize: function() {

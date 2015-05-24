@@ -27,7 +27,7 @@ StarMaker.prototype = {
     generatePW: function() {
         var _this = this;
         _this.PWinterval = setTimeout(function() {
-            PUs.doublePoints.setOut();
+            PUs.moreStars.setOut();
             _this.generatePW();
         }, randomIntFromInterval(4000, 6000));
     },

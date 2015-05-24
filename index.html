@@ -8,16 +8,43 @@
 </head>
 <body>
     <div id="container">
+<!-- 
+        <div id="plusses">
+            <div class="plus">x</div>
+            <div class="plus">x</div>
+            <div class="plus">x</div>
+            <div class="plus">x</div>
+            <div class="plus">x</div>
+            <div class="plus">x</div>
+            <div class="plus">x</div>
+            <div class="plus">x</div>
+            <div class="plus">x</div>
+        </div>
+ -->
     	<canvas width="376" height="667" id="main-canvas"></canvas>
+
+        <div id="game-over">
+            <div class="X"><img src="/img/kryss.png" /></div>
+            <ul>
+                <li>0000000</li>
+                <li>0000000</li>
+                <li>0000000</li>
+                <li><div class="line"></div></li>
+                <li>0000000</li>
+            </ul>
+            <div class="play-button">
+                <img src="/img/pluppvit.jpg" />
+            </div>
+        </div>
 
         <div id="preloader">
             <img id="player-icon" src="/img/plupp.png" />
             <img id="star-icon" src="/img/prick.png" />
             <img id="pw-double-icon" src="/img/powers/dubble.png" />
+            <img id="pw-more-stars-icon" src="/img/powers/morestars.svg" />
             <img id="pw-multi-icon" src="/img/powers/multi.png" />
             <img id="pw-xtraliv-icon" src="/img/powers/xtraliv.png" />
         </div>
-
 
         <script src="js/Game.js"></script>
         <script src="js/TouchController.js"></script>

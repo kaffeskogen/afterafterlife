@@ -17,9 +17,21 @@ Game.onWindowResize();
 
 // POWERUPS
 var PUs = {
-    doublePoints: new PowerUp( {
+    doublePoints: new PowerUp({
         name: 'doublePoints',
         image: 'pw-double-icon',
+        onStart: function() {
+            Game.extraStarValue += 4;
+        },
+        onEnd: function() {
+            Game.extraStarValue -= 4;
+        },
+        timing: 5000
+    }),
+
+    moreStars: new PowerUp({
+        name: 'doublePoints',
+        image: 'pw-more-stars-icon',
         onStart: function() {
             Game.extraStarValue += 4;
         },
