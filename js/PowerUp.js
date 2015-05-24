@@ -13,6 +13,8 @@ PowerUp.prototype = {
         this.onStart = data.onStart;
         this.onEnd = data.onEnd;
         this.timing = data.timing;
+        this.image = document.getElementById(data.image);
+        this.name = data.name;
 
         this.width = 40;
         this.height = 40;
@@ -43,15 +45,21 @@ PowerUp.prototype = {
     },
 
     draw: function(ctx) {
+        // ctx.beginPath();
+        // ctx.fillStyle = "#fff";
+        // ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+
         ctx.beginPath();
-        ctx.fillStyle = "#fff";
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.fillStyle = "rgb(0,200,0)";
+
+        // ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        ctx.fill()
     },
 
     setOut: function() {
         this.y = -this.height;
         this.x = Math.floor(Math.random() * Game.options.width) - 10;
-        console.log(this.x);
         this.startFalling();
     },
 
@@ -61,10 +69,9 @@ PowerUp.prototype = {
     },
 
     pickUp: function() {
-        this.onStart();
+        Game.addToPowerUpCount(this.name);
         this.stopFalling();
-        this.hide();
         sounds.multiply();
-        setTimeout(this.onEnd, this.timing)
+        this.hide();
     }
 }

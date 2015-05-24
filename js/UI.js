@@ -82,4 +82,14 @@ UI.prototype = {
             this.scoreHolder.style.display = 'none';
     },
 
+    removeLife: function() {
+        var lives = this.lives.getElementsByClassName('life');
+        for (var i = 0, l; l = lives[i++];) {
+            if (l.innerHTML === 'o') {
+                l.innerHTML = 'x';
+                break;
+            }
+        }
+    }
+
 }

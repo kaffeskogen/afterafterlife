@@ -9,7 +9,7 @@ canvas {
     width: 376px;
     height: 667px;
     background-color: #000;
-    background-image: url('/img/bg_black.jpg');
+    background: url('/img/bg_black.jpg') repeat;
 }
 
 .info {
@@ -46,7 +46,6 @@ canvas {
 
 #middle-view {
     width: 100%;
-    background-color: #fff;
     position: absolute;
     top: 0;
     left: 0;
@@ -59,6 +58,9 @@ canvas {
     -webkit-transition: max-height 1s;
     -moz-transition: max-height 1s;
     transition: max-height 1s;
+
+    /*background: #fff url(/img/plupp.png) no-repeat center 80%;*/
+    background: #fff;
 }
 
 #middle-view.show {
@@ -84,16 +86,15 @@ canvas {
     position: absolute;
     left: 50%;
     margin-left: -40px;
-    top: 50%;
     text-align: center;
     font-family: "Courier New", Courier, monospace;
     font-size: 80px;
     width: 80px;
     height: 80px;
 }
-.life:nth-child(1) { margin-top: -120px; }
-.life:nth-child(2) { margin-top: -40px; }
-.life:nth-child(3) { margin-top: 40px; }
+.life:nth-child(1) { top: 200px; }
+.life:nth-child(2) { top: 280px; }
+.life:nth-child(3) { top: 360px; }
 
 #home-view {
     width: 100%;
