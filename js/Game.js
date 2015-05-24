@@ -69,13 +69,11 @@ G.prototype = {
         ui.removeLife();
         if (this.gameStage < 3) {
             this.gameStage++;
-            ui.showMiddleView();
             setTimeout(function() {
                 ui.showPlayButton();
             }, 800)
-        } else {
-            ui.showGameOver();
         }
+        ui.showMiddleView();
     },
 
     startThirdRound: function() {
