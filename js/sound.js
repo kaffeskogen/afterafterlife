@@ -114,28 +114,37 @@ function newAudioContext() {
 function finishedLoading(bufferList) {
 
     sounds.plupp = function(){
+      var gain = context.createGain();
+      gain.gain.value = 0.02;
       var touchSound = context.createBufferSource();
       touchSound.buffer = bufferList[Math.floor((Math.random() * 6) + 1)];
-      touchSound.connect(context.destination);
+      touchSound.connect(gain);
+      gain.connect(context.destination);
       touchSound.start(0);
     }
 
     
     
     sounds.touch = function(){
+      var gain = context.createGain();
+      gain.gain.value = 0.1;
+      
       var touchSound = context.createBufferSource();
       touchSound.buffer = bufferList[10];
-      touchSound.connect(context.destination);
+      touchSound.connect(gain);
+      gain.connect(context.destination);
       touchSound.start(0);
     }
 
     sounds.ambient1 = function(){ 
-
-    
+      var gain = context.createGain();
+      gain.gain.value = 0.1;
       var startSound = context.createBufferSource();
       startSound.buffer = bufferList[7];
-      startSound.connect(context.destination);
+      startSound.connect(gain);
+      gain.connect(context.destination);
       startSound.start(0);
+      startSound.loop = true;
     }
 
     sounds.ambient1();
