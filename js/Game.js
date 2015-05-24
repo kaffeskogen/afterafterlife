@@ -10,6 +10,7 @@ G.prototype = {
         _this.ctx = _this.canvas.getContext('2d');
         _this.currentScore = 0;
         _this.gameStage = 1;
+        _this.gameStageScores = [null, 0, 0, 0];
         _this.extraStarValue = 0;
         _this.scoreMultiplier = 1;
         _this.options = {
@@ -54,6 +55,8 @@ G.prototype = {
 
     newRound: function() {
         var _this = this;
+        Game.gameStage++;
+        ui.updateScoreBox();
         sm.clearAllStars();
         sm.startCreating();
         ui.hidePlayButton();
@@ -65,13 +68,22 @@ G.prototype = {
     endLife: function() {
         sm.pauseAllStars();
         ui.removeLife();
+
+        var s = this.currentScore;
+        for (var i = this.gameStage; i > 1; i--) {
+            s -= this.gameStageScores[i];
+        };
+
+        ui.updateGameOverValue();
+
         if (this.gameStage < 3) {
-            this.gameStage++;
+            ui.showMiddleView();
             setTimeout(function() {
                 ui.showPlayButton();
             }, 800)
+        } else {
+            ui.showGameOver();
         }
-        ui.showMiddleView();
     },
 
     startThirdRound: function() {

@@ -70,6 +70,7 @@ StarMaker.prototype = {
             if ((star.getTop() > Game.options.height) && !_this.allStarsStopped) {
                 _this.pauseAllStars();
                 Game.endLife();
+                ui.updateScoreBox();
             }
             var ret = cd.checkCollision(star, Game.getPlayer());
             return !(ret)
@@ -80,7 +81,7 @@ StarMaker.prototype = {
         if (addedScore > 0) {
             var addedScore = (this.stars.length - arr.length) + Game.extraStarValue;
 
-            Game.currentScore += (addedScore * Game.scoreMultiplier);
+            Game.gameStageScores[Game.gameStage] += (addedScore * Game.scoreMultiplier);
 
             ui.updateScoreBox();
 

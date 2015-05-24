@@ -8,10 +8,10 @@ TouchController.prototype = {
         var _this = this;
         _this.canvas = document.querySelector('#main-canvas');
         
-        _this.container = document.createElement('div');
-        _this.container.className = 'info';
-        _this.container.innerHTML = 'touch up';
-        document.body.appendChild(_this.container);
+        
+        
+        
+        
 
         _this.canvas.addEventListener('touchstart', onTouchStart, false);
 
@@ -30,7 +30,7 @@ TouchController.prototype = {
 
             _this.canvas.addEventListener('touchmove', onTouchMove, false);
             _this.canvas.addEventListener('touchend', onTouchUp, false);
-            _this.container.innerHTML = 'touch down';
+            
 
             sounds.touch();
 
@@ -42,14 +42,14 @@ TouchController.prototype = {
             document.removeEventListener('touchmove', onTouchMove, false);
             document.removeEventListener('touchup', onTouchUp, false);
 
-            _this.container.innerHTML = 'touch up';
+            
         }
 
         function onTouchMove (event) {
             var xPos = event.targetTouches[0].pageX;
             var yPos = event.targetTouches[0].pageY;
 
-            _this.container.innerHTML = 'X: ' + xPos + '<br>' +'Y: ' + yPos;
+            
             var elPos = Game.getPlayer().getCurrentPos();
 
             var dif = {

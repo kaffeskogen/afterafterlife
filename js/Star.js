@@ -13,8 +13,8 @@ Star.prototype = {
         this.height = 32;
         this.value = 0;
         this.xSpeed = 0.1;
-        this.ySpeed = 2;
-        this.defaultYSpeed = 2;
+        this.ySpeed = 8;
+        this.defaultYSpeed = 8;
         this.canvasWidth = 375;
     },
 
