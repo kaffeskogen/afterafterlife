@@ -42,11 +42,14 @@ UI.prototype = {
 
     showMiddleView: function() {
         this.middleView.className = 'show';
+        sounds.dead();
+        sounds.nextLevel();
         return this.middleView;
     },
 
     hideMiddleView: function() {
         this.middleView.className = 'hide';
+        sounds.nextLevelUp();
         return this.middleView;
     },
 
