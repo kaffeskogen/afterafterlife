@@ -10,13 +10,14 @@ UI.prototype = {
         this.homeView = null;
         this.lives = null;
         this.playButton = null;
-        this.gameOver = null;
+        this.gameOver = document.getElementById('game-over');
 
         this.middleView = this.createMiddleView();
         this.createScoreBox();
         this.addLivesToMiddleview();
         this.createPlayerIcon();
-        this.setGameOver = null;
+
+        this.moveGameOverToBottomOfIndex();
     },
 
     onWindowResize: function() {
@@ -24,6 +25,28 @@ UI.prototype = {
         for (var i = 0, l; l = lives[i++];) {
             l.style.top = ((Game.options.height - 300) / 2 + ((i-1) * 80)) + 'px';
         }
+    },
+
+    moveGameOverToBottomOfIndex: function() {
+        var _this = this;
+        document.getElementById('container').appendChild(_this.gameOver);
+    },
+
+    updateGameOverValue: function() {
+        var lis = this.gameOver.getElementsByTagName('li');
+        var val = Game.gameStageScores[Game.gameStage]
+        lis[Game.gameStage-1].innerHTML = addZeros(val)
+
+        if (Game.gameStage === 3) {
+            var sum = 0;
+            for (var i = 1, c; c = Game.gameStageScores[i++];) {
+                sum += c;
+            }
+            console.log(sum);
+            lis[lis.length - 1].innerHTML = addZeros(sum);
+            document.getElementsByClassName('score-counter')[0].style.display = 'none';
+        }
+
     },
 
     createScoreBox: function() {
@@ -62,6 +85,16 @@ UI.prototype = {
         i.addEventListener("touchstart", Game.newRound, false);
         this.playButton = i;
         this.lives.appendChild(i);
+    },
+
+    showGameOver: function() {
+        this.gameOver.className = 'show';
+        return this.gameOver;
+    },
+
+    hideGameOver: function() {
+        this.gameOver.className = 'hide';
+        return this.gameOver;
     },
 
     showPlayButton: function() {
@@ -107,10 +140,10 @@ UI.prototype = {
 
     updateScoreBox: function() {
         var write = '';
-        for (var i = (Game.currentScore + '').length; i < 7; i++) {
+        for (var i = (Game.gameStageScores[Game.gameStage] + '').length; i < 7; i++) {
             write += '0';
         }
-        this.scoreHolder.innerHTML = write + Math.floor(Game.currentScore);
+        this.scoreHolder.innerHTML = write + Math.floor(Game.gameStageScores[Game.gameStage]);
     },
 
     hideScoreBox: function() {

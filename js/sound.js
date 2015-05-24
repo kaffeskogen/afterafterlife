@@ -8,7 +8,8 @@ sounds = {
     touch: function () {},
     ambient1: function () {},
     multiply: function () {},
-    clickSound: function() {}
+    clickSound: function() {},
+    pauseAmbient: function() {}
 };
 
 activeSounds = {};
