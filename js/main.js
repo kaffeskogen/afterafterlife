@@ -20,19 +20,18 @@ var PUs = {
         name: 'doublePoints',
         image: 'pw-double-icon',
         onStart: function() {
-            Game.scoreMultiplier *= 2;
+            Game.extraStarValue += 4;
         },
         onEnd: function() {
-            Game.scoreMultiplier /= 1;
+            Game.extraStarValue -= 4;
         },
         timing: 5000
     })
 }
+
 for (var p in PUs) {
     Game.addEntity(PUs[p]);
 }
-
-PUs.doublePoints.setOut();
 
 // Starts Game
 loop.start();

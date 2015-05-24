@@ -6,6 +6,7 @@ StarMaker.prototype = {
     initialize: function() {
         this.stars = [];
         this.createInterval = null;
+        this.PWinterval = null;
         this.allStarsStopped = false;
         this.lastStar = {
             x: 30,
@@ -20,6 +21,15 @@ StarMaker.prototype = {
         this.createInterval = setInterval(function() {
             _this.addStar()
         }, 500)
+        this.generatePW();
+    },
+
+    generatePW: function() {
+        var _this = this;
+        _this.PWinterval = setTimeout(function() {
+            PUs.doublePoints.setOut();
+            _this.generatePW();
+        }, randomIntFromInterval(4000, 6000));
     },
 
     addStar: function(x) {
@@ -28,8 +38,8 @@ StarMaker.prototype = {
             s = new Star({x: x});
             this.stars.push(s);
         } else {
-            var t = this.lastStar.x + Math.floor(Math.random() * 20) - 10;
-            if (t > Game.options.width - 10) t = Game.options.width - 10;
+            var t = this.lastStar.x + Math.floor(randomIntFromInterval(-100, 100));
+            if (t > Game.options.width - 60) t = Game.options.width - 60;
             else if (t < 10) t = 10;
             this.stars.push(new Star({x: t}));
 
@@ -42,7 +52,8 @@ StarMaker.prototype = {
     },
 
     pauseAllStars: function() {
-        window.clearInterval(this.createInterval)
+        window.clearInterval(this.createInterval);
+        window.clearInterval(this.PWinterval);
         this.allStarsStopped = true;
         for (var i = 0, star; star = this.stars[i++];) {
             star.stop();

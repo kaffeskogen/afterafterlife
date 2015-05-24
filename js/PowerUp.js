@@ -21,7 +21,7 @@ PowerUp.prototype = {
         this.halfWidth = this.width/2;
         this.halfHeight = this.height/2;
         this.x = Game.options.width / 2;
-        this.y = 200;
+        this.y = -this.height;
         this.ySpeed = 4;
 
         this.falling = false;
@@ -59,7 +59,7 @@ PowerUp.prototype = {
 
     setOut: function() {
         this.y = -this.height;
-        this.x = Math.floor(Math.random() * Game.options.width) - 10;
+        this.x = randomIntFromInterval(0, 400);
         this.startFalling();
     },
 
