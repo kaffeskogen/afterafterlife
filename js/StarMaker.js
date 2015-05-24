@@ -20,7 +20,7 @@ StarMaker.prototype = {
         this.allStarsStopped = false;
         this.createInterval = setInterval(function() {
             _this.addStar()
-        }, 500)
+        }, 100)
         this.generatePW();
     },
 

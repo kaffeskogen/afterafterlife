@@ -92,39 +92,39 @@ BufferLoader.prototype.load = function() {
 
 
 
-// function newAudioContext() {
+function newAudioContext() {
   
-//   // //Creates a audioContext
-//   // context = new AudioContext();
+  // //Creates a audioContext
+  // context = new AudioContext();
   
 
-//   // Calls the BufferLoader and loads sound
-//   bufferLoader = new BufferLoader(
-//     context,
-//     [
-//       './audio/plupp1.mp3',
-//       './audio/plupp2.mp3',
-//       './audio/plupp3.mp3',
-//       './audio/plupp4.mp3',
-//       './audio/plupp5.mp3',       //5
-//       './audio/plupp6.mp3',
-//       './audio/plupp7.mp3',
-//       './audio/ambient1.mp3',
-//       './audio/ambient2.mp3',
-//       './audio/ambient3.mp3',     //10
-//       './audio/kontrolljud.mp3',
-//       './audio/nextLevelDown.mp3',
-//       './audio/nextLevelUp.mp3',
-//       './audio/dead.mp3',
-//       './audio/multiply.mp3',      //15
-//       './audio/click.mp3'
-//     ],
-//     finishedLoading  
-//   );
+  // Calls the BufferLoader and loads sound
+  bufferLoader = new BufferLoader(
+    context,
+    [
+      './audio/plupp1.mp3',
+      './audio/plupp2.mp3',
+      './audio/plupp3.mp3',
+      './audio/plupp4.mp3',
+      './audio/plupp5.mp3',       //5
+      './audio/plupp6.mp3',
+      './audio/plupp7.mp3',
+      './audio/ambient1.mp3',
+      './audio/ambient2.mp3',
+      './audio/ambient3.mp3',     //10
+      './audio/kontrolljud.mp3',
+      './audio/nextLevelDown.mp3',
+      './audio/nextLevelUp.mp3',
+      './audio/dead.mp3',
+      './audio/multiply.mp3',      //15
+      './audio/click.mp3'
+    ],
+    finishedLoading  
+  );
 
-//   bufferLoader.load();
+  bufferLoader.load();
  
-// }
+}
 
 
 function finishedLoading(bufferList) {

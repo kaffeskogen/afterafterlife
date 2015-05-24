@@ -54,7 +54,7 @@ UI.prototype = {
 
     createPlayerIcon: function() {
         var i = new Image(80, 80);
-        i.src = '/img/plupp.png';
+        i.src = '/img/pluppvit.jpg';
         i.width = "80";
         i.height = "80";
         i.setAttribute('id', 'play-button');
