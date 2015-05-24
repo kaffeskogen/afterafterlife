@@ -22,7 +22,6 @@ G.prototype = {
             xtraLife: 0,
             multiplier: 0
         };
-        _this.setEventListeners();
     },
 
     addToPowerUpCount: function(pw) {
@@ -93,8 +92,9 @@ G.prototype = {
         Game.options.height = document.body.offsetHeight - 10;
         Game.updateCanvasBounds();
         for (var i = 0, child; child = Game.entities[i++];) {
-            if (isUndefined(child.onWindowResize)) child.onWindowResize();
+            if(typeof(child.onWindowResize) !== 'undefined') child.onWindowResize();
         }
+        ui.onWindowResize();
     },
 
     update: function() {

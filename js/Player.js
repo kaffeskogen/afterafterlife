@@ -31,8 +31,8 @@ Player.prototype = {
         ctx.fill()
     },
 
-    onWindowsResize: function() {
-
+    onWindowResize: function() {
+        this.y = Game.options.height * 0.8;
     },
 
     setX: function(val) {

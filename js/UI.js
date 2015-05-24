@@ -3,6 +3,7 @@ var UI = function() {
 };
 
 UI.prototype = {
+
     initialize: function() {
         this.scoreHolder = null;
         this.middleView = null;
@@ -15,6 +16,13 @@ UI.prototype = {
         this.createScoreBox();
         this.addLivesToMiddleview();
         this.createPlayerIcon();
+    },
+
+    onWindowResize: function() {
+        var lives = this.lives.getElementsByClassName('life');
+        for (var i = 0, l; l = lives[i++];) {
+            l.style.top = ((Game.options.height - 300) / 2 + ((i-1) * 80)) + 'px';
+        }
     },
 
     createScoreBox: function() {

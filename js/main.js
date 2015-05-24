@@ -1,5 +1,5 @@
 Game = new G();
-
+Game.setEventListeners();
 var tc = new TouchController({});
 var loop = new Loop();
 
