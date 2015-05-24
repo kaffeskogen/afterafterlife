@@ -16,13 +16,23 @@ G.prototype = {
             width: 375,
             height: 667,
         };
+
+        this.powerUpCount = {
+            doublePoints: 0,
+            xtraLife: 0,
+            multiplier: 0
+        };
+
         _this.updateCanvasBounds();
+    },
+
+    addToPowerUpCount: function(pw) {
+        this.powerUpCount[pw]++;
     },
 
     updateCanvasBounds: function() {
         var _this = this;
         var w = (parseInt(_this.canvas.offsetWidth) - 20) + 'px';
-        console.log(w);
         _this.canvas.style.width = w
         _this.canvas.setAttribute('width', w)
         var h = (parseInt(_this.canvas.offsetHeight) - 10) + 'px';
@@ -46,6 +56,16 @@ G.prototype = {
 
     endLife: function() {
         sm.pauseAllStars();
+        ui.showMiddleView();
+        ui.removeLife();
+        if (this.gameStage < 3) {
+            this.gameStage++;
+        } else {
+            this.startThirdRound();
+        }
+    },
+
+    startThirdRound: function() {
         
     },
 

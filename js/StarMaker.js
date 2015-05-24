@@ -5,6 +5,8 @@ var StarMaker = function() {
 StarMaker.prototype = {
     initialize: function() {
         this.stars = [];
+        this.createInterval = null;
+        this.allStarsStopped = false;
         this.lastStar = {
             x: 30,
             vx: 0,
@@ -14,7 +16,7 @@ StarMaker.prototype = {
 
     startCreating: function() {
         var _this = this;
-        var starInt = setInterval(function() {
+        this.createInterval = setInterval(function() {
             _this.addStar()
         }, 500)
     },
@@ -34,9 +36,13 @@ StarMaker.prototype = {
         }
     },
 
+    clearAllStars: function() {
+        this.stars = [];
+    },
 
     pauseAllStars: function() {
-        clearInterval(starInt);
+        window.clearInterval(this.createInterval)
+        this.allStarsStopped = true;
         for (var i = 0, star; star = this.stars[i++];) {
             star.stop();
         }
@@ -49,7 +55,7 @@ StarMaker.prototype = {
         }
 
         var arr = this.stars.filter(function (star) {
-            if (star.getTop() > Game.options.height) {
+            if ((star.getTop() > Game.options.height) && !_this.allStarsStopped) {
                 _this.pauseAllStars();
                 Game.endLife();
             }

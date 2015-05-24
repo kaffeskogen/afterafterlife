@@ -33,9 +33,8 @@ Star.prototype = {
         // this.x = Math.cos(this.value) * ((this.canvasWidth - this.strokeWidth/2)/2) + (this.canvasWidth/2);
         this.y += this.ySpeed;
 
-        if (this.getBottom() > Game.getPlayer().getTop())
 
-        if (this.y > Game.options.height) this.y = -10;
+        // if (this.y > Game.options.height) this.y = -10;
     },
 
     stop: function() {

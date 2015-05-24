@@ -17,11 +17,13 @@ var ui = new UI();
 // POWERUPS
 var PUs = {
     doublePoints: new PowerUp( {
+        name: 'doublePoints',
+        image: 'pw-double-icon',
         onStart: function() {
-            Game.scoreMultiplier += 2;
+            Game.scoreMultiplier *= 2;
         },
         onEnd: function() {
-            Game.scoreMultiplier -= 2;
+            Game.scoreMultiplier /= 1;
         },
         timing: 5000
     })
@@ -36,3 +38,4 @@ PUs.doublePoints.setOut();
 loop.start();
 
 sm.startCreating();
+// ui.showMiddleView();
