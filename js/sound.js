@@ -120,7 +120,8 @@ function newAudioContext() {
       './audio/multiply.mp3',      //15
       './audio/click.mp3',
       './audio/ambient4.mp3',
-      './audio/startAmbient.mp3'
+      './audio/startAmbient.mp3',
+      './audio/slutAmbient.mp3'
     ],
     finishedLoading  
   );
