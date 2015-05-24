@@ -82,27 +82,27 @@ BufferLoader.prototype.load = function() {
 
 
 
-function newAudioContext() {
+// function newAudioContext() {
   
-  //Creates a audioContext
-  context = new AudioContext();
+//   //Creates a audioContext
+//   context = new AudioContext();
   
-  //Calls the BufferLoader and loads sound
-  bufferLoader = new BufferLoader(
-    context,
-    [
-      './audio/ambient1.mp3',
-      './audio/ambient2.mp3',
-      './audio/ambient3.mp3',
-      './audio/kontrolljud1.mp3'
-    ],
-    finishedLoading
+//   //Calls the BufferLoader and loads sound
+//   bufferLoader = new BufferLoader(
+//     context,
+//     [
+//       './audio/ambient1.mp3',
+//       './audio/ambient2.mp3',
+//       './audio/ambient3.mp3',
+//       './audio/kontrolljud1.mp3'
+//     ],
+//     finishedLoading
     
-    );
+//     );
 
-  bufferLoader.load();
+//   bufferLoader.load();
  
-}
+// }
 
 
 function finishedLoading(bufferList) {
@@ -128,7 +128,7 @@ function finishedLoading(bufferList) {
 
     sounds.ambient1();
   
- 
+  
 
 }
 
