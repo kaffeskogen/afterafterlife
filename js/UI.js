@@ -62,6 +62,7 @@ UI.prototype = {
 
     hidePlayButton: function() {
         this.playButton.className = 'hide';
+        sounds.clickSound();
         return this.playButton;
     },
 
