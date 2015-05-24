@@ -26,6 +26,9 @@ TouchController.prototype = {
             _this.canvas.addEventListener('touchend', onTouchUp, false);
             _this.container.innerHTML = 'touch down';
 
+            sounds.touch();
+
+
         }
 
         function onTouchUp (event) {
