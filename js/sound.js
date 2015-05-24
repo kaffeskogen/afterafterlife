@@ -7,8 +7,11 @@ sounds = {
     dead: function () {},
     touch: function () {},
     ambient1: function () {},
-    multiply: function () {}
+    multiply: function () {},
+    clickSound: function() {}
 };
+
+activeSounds = {};
 
 
 function BufferLoader(context, urlList, callback) {
@@ -85,15 +88,15 @@ BufferLoader.prototype.load = function() {
       var context = new webkitAudioContext();
   }
 
-  // newAudioContext();
+  newAudioContext();
 
 
 
 
 function newAudioContext() {
   
-  // //Creates a audioContext
-  // context = new AudioContext();
+  //Creates a audioContext
+  context = new AudioContext();
   
 
   // Calls the BufferLoader and loads sound
@@ -115,7 +118,9 @@ function newAudioContext() {
       './audio/nextLevelUp.mp3',
       './audio/dead.mp3',
       './audio/multiply.mp3',      //15
-      './audio/click.mp3'
+      './audio/click.mp3',
+      './audio/ambient4.mp3',
+      './audio/startAmbient.mp3'
     ],
     finishedLoading  
   );
@@ -155,6 +160,7 @@ function finishedLoading(bufferList) {
       nextLevel.connect(gain);
       gain.connect(context.destination);
       nextLevel.start(0);
+      activeSounds.nextLevel = nextLevel;
     }
 
     sounds.nextLevelUp = function(){
@@ -189,34 +195,77 @@ function finishedLoading(bufferList) {
       touchSound.start(0);
     }
 
+    sounds.pauseAmbient = function(){
+      var gain = context.createGain();
+      gain.gain.value = 0.2;
+      var pauseAmbient;
+
+      if(Game.gameStage==2){
+        if(typeof(activeSounds.ambient1) !== "undefined"){
+          activeSounds.ambient1.stop();
+        }
+      }
+      else if(Game.gameStage==3){
+        if(typeof(activeSounds.ambient2) !== "undefined"){
+          activeSounds.ambient2.stop();
+          activeSounds.ambient2.stop();
+        }
+      }
+      pauseAmbient = context.createBufferSource();
+      pauseAmbient.buffer = bufferList[16];
+      pauseAmbient.connect(gain);
+      pauseAmbient.connect(context.destination);
+      pauseAmbient.start(0);
+      pauseAmbient.loop = true;
+      activeSounds.pauseAmbient = pauseAmbient;
+    }
+
     sounds.ambient1 = function(){
 
       var gain = context.createGain();
       gain.gain.value = 0.3;
-      var startSound = context.createBufferSource();
-      startSound.buffer = bufferList[7];
-      startSound.connect(gain);
-      gain.connect(context.destination);
+      var ambient1;
+      var ambient2; 
+      var ambient3;
       
-
-        startSound.start(0);
-      startSound.loop = true;
-       
-    
-    }
-
-    sounds.ambient2 = function(){
-      var gain = context.createGain();
-      gain.gain.value = 0.3;
-      var startSound = context.createBufferSource();
-      
-        startSound.buffer = bufferList[8];
-        startSound.connect(gain);
+      if(Game.gameStage==1){
+        
+        ambient1 = context.createBufferSource();
+        ambient1.buffer = bufferList[7];
+        ambient1.connect(gain);
+        ambient1.connect(context.destination);
+        ambient1.start(0);
+        ambient1.loop = true;
+        activeSounds.ambient1 = ambient1;
+        
+      }
+      else if(Game.gameStage==2){
+        if(typeof(activeSounds.pauseAmbient) !== "undefined"){
+          activeSounds.pauseAmbient.stop();
+        }
+        ambient2 = context.createBufferSource();
+        ambient2.buffer = bufferList[8];
+        ambient2.connect(gain);
         gain.connect(context.destination);
-        startSound.start(0);
-        startSound.loop = true;
-   
+        ambient2.start(0)
+        ambient2.loop = true;
+        activeSounds.ambient2 = ambient2;
+      }
+      else if(Game.gameStage==3){
+        if(typeof(activeSounds.pauseAmbient) !== "undefined"){
+          activeSounds.pauseAmbient.stop();
+        }
+        ambient3= context.createBufferSource();
+        ambient3.buffer = bufferList[9];
+        ambient3.connect(gain);
+        gain.connect(context.destination);
+        ambient3.start(0)
+        ambient3.loop = true;
+        activeSounds.ambient3 = ambient3;
+      }
+      
     }
+
 
     sounds.multiply = function(){
       var gain = context.createGain();

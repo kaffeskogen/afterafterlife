@@ -71,6 +71,7 @@ UI.prototype = {
 
     hidePlayButton: function() {
         this.playButton.className = 'hide';
+        // sounds.clickSound();
         return this.playButton;
     },
 
@@ -78,6 +79,7 @@ UI.prototype = {
         this.middleView.className = 'show';
         sounds.dead();
         sounds.nextLevel();
+        sounds.pauseAmbient();
         return this.middleView;
     },
 
