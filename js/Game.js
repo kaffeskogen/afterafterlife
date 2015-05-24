@@ -54,14 +54,24 @@ G.prototype = {
         return this.entities[0];
     },
 
+    newRound: function() {
+        sm.clearAllStars();
+        sm.startCreating();
+        ui.hidePlayButton();
+        ui.hideMiddleView();
+    },
+
     endLife: function() {
         sm.pauseAllStars();
-        ui.showMiddleView();
         ui.removeLife();
         if (this.gameStage < 3) {
             this.gameStage++;
+            ui.showMiddleView();
+            setTimeout(function() {
+                ui.showPlayButton();
+            }, 800)
         } else {
-            this.startThirdRound();
+            ui.showGameOver();
         }
     },
 

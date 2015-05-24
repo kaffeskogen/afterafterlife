@@ -1,9 +1,13 @@
 var bufferLoader;
 
 sounds = {
-  plupp: function() {},
-  touch: function() {},
-  ambient1: function() {},
+    plupp: function () {},
+    nextLevel: function () {},
+    nextLevelUp: function () {},
+    dead: function () {},
+    touch: function () {},
+    ambient1: function () {},
+    multiply: function () {}
 };
 
 

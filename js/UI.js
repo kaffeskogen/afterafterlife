@@ -8,10 +8,13 @@ UI.prototype = {
         this.middleView = null;
         this.homeView = null;
         this.lives = null;
+        this.playButton = null;
+        this.gameOver = null;
 
         this.middleView = this.createMiddleView();
         this.createScoreBox();
         this.addLivesToMiddleview();
+        this.createPlayerIcon();
     },
 
     createScoreBox: function() {
@@ -31,13 +34,35 @@ UI.prototype = {
     createMiddleView: function() {
         var middleView = document.createElement('div');
         middleView.setAttribute('id', 'middle-view');
-        // this.middleView.className = 'show';
+
+        // middleView.className = 'show';
         middleView.innerHTML = '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
 
         document.getElementById('container').appendChild(middleView);
 
 
         return middleView;
+    },
+
+    createPlayerIcon: function() {
+        var i = new Image(80, 80);
+        i.src = '/img/plupp.png';
+        i.width = "80";
+        i.height = "80";
+        i.setAttribute('id', 'play-button');
+        i.addEventListener("touchstart", Game.newRound, false);
+        this.playButton = i;
+        this.lives.appendChild(i);
+    },
+
+    showPlayButton: function() {
+        this.playButton.className = 'show';
+        return this.playButton;
+    },
+
+    hidePlayButton: function() {
+        this.playButton.className = 'hide';
+        return this.playButton;
     },
 
     showMiddleView: function() {

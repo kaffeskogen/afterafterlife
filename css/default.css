@@ -59,7 +59,7 @@ canvas {
     -moz-transition: max-height 1s;
     transition: max-height 1s;
 
-    /*background: #fff url(/img/plupp.png) no-repeat center 80%;*/
+    background-color: #fff;
     background: #fff;
 }
 
@@ -70,6 +70,27 @@ canvas {
 
 #middle-view.hide {
     max-height: 0;
+}
+
+#middle-view #play-button {
+    position: absolute;
+    display: block;
+    width: 80px;
+    height: 80px;
+    top: 80%;
+    margin-top: -40px;
+    left: 50%;
+    margin-left: -40px;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+}
+
+#middle-view #play-button.show {
+    opacity: 1;
 }
 
 .lives {

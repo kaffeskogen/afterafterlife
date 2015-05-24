@@ -16,6 +16,7 @@ StarMaker.prototype = {
 
     startCreating: function() {
         var _this = this;
+        this.allStarsStopped = false;
         this.createInterval = setInterval(function() {
             _this.addStar()
         }, 500)
