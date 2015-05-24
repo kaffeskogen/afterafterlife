@@ -91,26 +91,30 @@ function newAudioContext() {
   // //Creates a audioContext
   // context = new AudioContext();
   
-  // // Calls the BufferLoader and loads sound
-  // bufferLoader = new BufferLoader(
-  //   context,
-  //   [
-  //     './audio/plupp1.mp3',
-  //     './audio/plupp2.mp3',
-  //     './audio/plupp3.mp3',
-  //     './audio/plupp4.mp3',
-  //     './audio/plupp5.mp3',       //5
-  //     './audio/plupp6.mp3',
-  //     './audio/plupp7.mp3',
-  //     './audio/ambient1.mp3',
-  //     './audio/ambient2.mp3',
-  //     './audio/ambient3.mp3',     //10
-  //     './audio/kontrolljud1.mp3'
-  //   ],
-  //   finishedLoading  
-  // );
 
-  // bufferLoader.load();
+  // Calls the BufferLoader and loads sound
+  bufferLoader = new BufferLoader(
+    context,
+    [
+      './audio/plupp1.mp3',
+      './audio/plupp2.mp3',
+      './audio/plupp3.mp3',
+      './audio/plupp4.mp3',
+      './audio/plupp5.mp3',       //5
+      './audio/plupp6.mp3',
+      './audio/plupp7.mp3',
+      './audio/ambient1.mp3',
+      './audio/ambient2.mp3',
+      './audio/ambient3.mp3',     //10
+      './audio/kontrolljud.mp3',
+      './audio/nextLevelDown.mp3',
+      './audio/nextLevelUp.mp3',
+      './audio/dead.mp3'
+    ],
+    finishedLoading  
+  );
+
+  bufferLoader.load();
  
 }
 
@@ -126,6 +130,38 @@ function finishedLoading(bufferList) {
       gain.connect(context.destination);
       touchSound.start(0);
     }
+
+    sounds.nextLevel = function(){
+      var gain = context.createGain();
+      gain.gain.value = 0.1;
+      var nextLevel = context.createBufferSource();
+      nextLevel.buffer = bufferList[11];
+      nextLevel.connect(gain);
+      gain.connect(context.destination);
+      nextLevel.start(0);
+    }
+
+    sounds.nextLevelUp = function(){
+      var gain = context.createGain();
+      gain.gain.value = 0.1;
+      var nextLevelUp = context.createBufferSource();
+      nextLevelUp.buffer = bufferList[12];
+      nextLevelUp.connect(gain);
+      gain.connect(context.destination);
+      nextLevelUp.start(0);
+    }
+
+    sounds.dead = function(){
+      var gain = context.createGain();
+      gain.gain.value = 0.3;
+      var dead = context.createBufferSource();
+      dead.buffer = bufferList[13];
+      dead.connect(gain);
+      gain.connect(context.destination);
+      dead.start(0);
+    }
+
+    
     
     sounds.touch = function(){
       var gain = context.createGain();
